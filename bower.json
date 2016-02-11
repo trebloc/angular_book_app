@@ -1,0 +1,19 @@
+{
+  "name": "angular_routing_lab",
+  "version": "0.0.0",
+  "authors": [
+    "GA WDI"
+  ],
+  "ignore": [
+    "node_modules",
+    "bower_components"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "angular": "~1.4.7",
+    "angular-ui-router": "~0.2.15",
+    "bootstrap": "^3.3.6",
+    "jquery": "^2.2.0",
+    "angular-resource": "^1.5.0"
+  }
+}

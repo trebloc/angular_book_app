@@ -1,0 +1,18 @@
+.bold {
+  font-weight: bolder;
+  font-size: 20px;
+}
+
+body {
+  font-size: 20px;
+  font-family: monospace;
+}
+
+img {
+  width: 300px;
+  height: 100%;
+}
+
+li {
+  list-style-type: none;
+}

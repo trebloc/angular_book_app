@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html ng-app='bookApp'>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Angular Resource Lab</title>
+  <base href="/">
+
+
+  <!-- Bower Components -->
+  <link type="text/css" rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.min.js"></script>
+
+
+  <!-- APP CSS -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- App JS -->
+  <script src="app.js"></script>
+  <script src="services.js"></script>
+  <script src="controllers.js"></script>
+
+
+</head>
+<body ng-controller="BooksController as bc">
+  <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" ui-sref="books-index">BookApp</a>
+    </div><!-- /.navbar-collapse -->
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <!-- <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li> -->
+        <li><a ui-sref="home">Home</a></li>
+      </ul>
+  </div><!-- /.container-fluid -->
+  </nav>
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <h2>Add A New Book</h2>
+        <!-- TODO: Display crud-able list of books -->
+        <div>
+          <form>
+            <div class="form-group">
+              <label for="book-title">Title</label>
+              <input type="text" data-ng-model="bc.newBook.title" class="form-control" placeholder="Title" autofocus>
+            </div>
+            <div class="form-group">
+              <label for="book-image">Image</label>
+              <input type="text" data-ng-model="bc.newBook.image" class="form-control" placeholder="Image URL" autofocus>
+            </div> 
+            <div class="form-group">
+              <label for="book-author">Author</label>
+              <input type="text" data-ng-model="bc.newBook.author" class="form-control" placeholder="Author" autofocus>
+            </div>
+            <div class="form-group">
+              <label for="book-release">Release Date</label>
+              <input type="text" data-ng-model="bc.newBook.releaseDate" class="form-control" placeholder="Release Date" autofocus>
+            </div>                                    
+          <input type="submit" value="Add Book" data-ng-click="bc.createBook()" class="btn btn-default">
+          </form>
+        </div>  
+        <div ng-repeat = "book in bc.books">
+            <h2>{{ book.title }}</h2>
+            <img ng-src="{{ book.image }}"> 
+            <p><strong>Author: </strong>{{ book.author}}</p>
+            <p><strong>Release Date: </strong>{{ book.releaseDate}}</p>
+                <!-- <input type="submit" class="form-control" value="Delete Book" data-ng-click="bc.deleteBook(book)" class="btn btn-danger"> -->
+            <button ng-click="book.displayEditForm = true" class="btn btn-default">Edit</button>
+            <button ng-click="bc.deleteBook(book)" class="btn btn-danger">Delete</button>
+          
+        <!-- form to edit book -->
+        <form ng-show="book.displayEditForm" ng-submit="bc.updateBook(book)">
+          <div class="form-group">
+            <input type="text" ng-model="book.title" class="form-control" placeholder="Title">
+          </div>
+          <div class="form-group">
+            <input type="text" ng-model="book.author" class="form-control" placeholder="Author">
+          </div>
+          <div class="form-group">
+            <input type="text" ng-model="book.image" class="form-control" placeholder="Image">
+          </div>
+          <div class="form-group">
+            <input type="text" ng-model="book.releaseDate" class="form-control" placeholder="Release Date">
+          </div>
+          <input type="submit" value="Save book" class="btn btn-default">
+        </form>
+
+        </div>  
+    </div>    
+  </div>
+</div>
+
+</body>
+</html>
